@@ -19,7 +19,7 @@ y = glass['Type']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Train a Random Forest classifier
-clf = RandomForestClassifier(random_state=33)
+clf = RandomForestClassifier(random_state=42)
 clf.fit(X_train, y_train)
 accuracy_default = clf.score(X_test, y_test)
 
@@ -70,5 +70,4 @@ print(classification_report(y_test, y_preds))
 joblib.dump(clf, 'glass_clf.joblib')
 
 # Save the model using pickle
-with open('glass_clf.pickle', 'wb') as file:
-    pickle.dump(clf, file)
+pickle.dump(clf, open('glass_clf.pickle', 'wb'))
